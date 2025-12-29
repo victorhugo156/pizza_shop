@@ -4,6 +4,7 @@ import { Label } from "@/components/ui/label";
 import {useForm} from "react-hook-form";
 import { z } from"zod";
 import { toast } from "sonner";
+import { Link } from "react-router";
 
 
 const signInForm = z.object({
@@ -35,6 +36,10 @@ export function SignIn() {
     }
     return (
         <div className="p-8">
+            <Button asChild  variant={"link"} className="absolute right-3 top-3">
+                <Link to={"/sign-up"}>New Establishment</Link>
+            </Button>
+            
             <div className="w-[350px] flex flex-col justify-center gap 6">
                 <div className="flex flex-col gap-2  text-center">
                     <h1 className="text-2xl font-semibold tracking-tight">
@@ -44,7 +49,7 @@ export function SignIn() {
                         Track your sells via admin panel
                     </p>
                 </div>
-                <form onSubmit={handleSubmit(handleSignIn)} className="space-y-4">
+                <form onSubmit={handleSubmit(handleSignIn)} className="space-y-4 mt-10">
                     <div className="space-y-2">
                         <Label htmlFor="email">Your email</Label>
                         <Input id="email" type="email" {...register("email")}/>
